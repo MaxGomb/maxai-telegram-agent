@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חיבור הסוכן לטלגרם — מדריך התקנה</title>
+<style>
+  :root{
+    --navy:#07102D; --blue:#579CFF; --cyan:#19C8EB;
+    --magenta:#CB0FB0; --purple:#892293; --gray:#363636; --light:#F4F6FB;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:"Heebo","Assistant","Segoe UI",Arial,sans-serif; color:var(--gray); margin:0; background:#fff; line-height:1.7;}
+  .page{max-width:820px; margin:0 auto; padding:0 38px 60px;}
+  header{background:linear-gradient(135deg,var(--navy) 0%,#0d1c4d 100%); color:#fff; padding:46px 38px 38px; text-align:right; border-bottom:5px solid var(--cyan);}
+  header .logo{font-size:22px; font-weight:800; letter-spacing:.5px; margin-bottom:18px;}
+  header .logo span{color:var(--blue);}
+  header h1{font-size:30px; margin:0 0 8px; font-weight:800; line-height:1.3;}
+  header p{font-size:16px; margin:0; color:#bcd0ff;}
+  .meta{margin-top:18px; font-size:13px; color:#8fa8e0;}
+  h2{color:var(--navy); font-size:21px; margin:38px 0 6px; padding-bottom:8px; border-bottom:2px solid #e7ecf7;}
+  h2 .num{display:inline-block; background:var(--blue); color:#fff; width:30px; height:30px; line-height:30px; text-align:center; border-radius:8px; font-size:15px; margin-left:10px; font-weight:700;}
+  h2 .star{background:var(--magenta);}
+  h3{color:var(--purple); font-size:16px; margin:20px 0 6px;}
+  p{margin:8px 0;}
+  .lead{font-size:16px; color:#444;}
+  code, pre{font-family:"SF Mono","Consolas","Menlo",monospace;}
+  pre{direction:ltr; text-align:left; background:var(--navy); color:#e8f0ff; padding:13px 16px; border-radius:9px; font-size:13.5px; overflow-x:auto; margin:8px 0; border-right:4px solid var(--cyan);}
+  pre .c{color:#7fd6a0;}
+  code.inl{background:#eef2fb; color:var(--magenta); padding:1px 6px; border-radius:5px; font-size:13px; direction:ltr; display:inline-block;}
+  .note{background:#fff7fd; border:1px solid #f0c8ea; border-right:4px solid var(--magenta); border-radius:9px; padding:11px 15px; margin:12px 0; font-size:14px;}
+  .note b{color:var(--magenta);}
+  .ok{background:#f0fbf4; border:1px solid #bfe6cd; border-right:4px solid #2faa5e; border-radius:9px; padding:11px 15px; margin:12px 0; font-size:14px;}
+  .warn{background:#fff8ec; border:1px solid #f3dca6; border-right:4px solid #e0a92e; border-radius:9px; padding:11px 15px; margin:12px 0; font-size:14px;}
+  ol,ul{padding-right:22px; margin:8px 0;}
+  li{margin:5px 0;}
+  table{width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px;}
+  th,td{border:1px solid #e2e8f6; padding:9px 11px; text-align:right; vertical-align:top;}
+  th{background:var(--navy); color:#fff; font-weight:700;}
+  tr:nth-child(even) td{background:var(--light);}
+  .paths{display:flex; gap:14px; margin:14px 0;}
+  .paths .col{flex:1; background:var(--light); border:1px solid #e2e8f6; border-radius:10px; padding:14px 16px;}
+  .paths .col h4{margin:0 0 6px; font-size:15px; color:var(--navy);}
+  .paths .col .tag{font-size:11px; padding:2px 9px; border-radius:20px; font-weight:700; color:#fff;}
+  .paths .rec .tag{background:#2faa5e;} .paths .adv .tag{background:var(--purple);}
+  figure{margin:14px 0; text-align:center;}
+  figure img{max-width:100%; border:1px solid #d8e0f0; border-radius:10px; box-shadow:0 2px 10px rgba(7,16,45,.08);}
+  figcaption{font-size:12.5px; color:#8a93a8; margin-top:6px;}
+  .slot{border:2px dashed #c3cee6; border-radius:10px; background:#fafcff; color:#7a86a0; padding:22px 16px; text-align:center; font-size:13px; margin:14px 0;}
+  .slot b{color:var(--blue);}
+  .foot{margin-top:46px; padding-top:18px; border-top:2px solid #e7ecf7; font-size:13px; color:#8a93a8; text-align:center;}
+  .foot b{color:var(--navy);}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span>MAX</span> AI.</div>
+  <h1>חיבור הסוכן שלך לטלגרם</h1>
+  <p>שלח הודעה בטלגרם — וקבל תשובה מהסוכן שלך, מכל מקום, 24/7</p>
+  <div class="meta">על השרת שלך · מנוי Claude (Max/Pro) · זמן: ~15 דקות · פעם אחת</div>
+</header>
+
+<div class="page">
+
+<h2>מה אתה מחבר כאן</h2>
+<p class="lead">בסוף המדריך תוכל לשלוח הודעה בטלגרם — מהטלפון או מהמחשב — והסוכן שלך על השרת יקבל, יחשוב, ויענה. אותו סוכן שבנית, רק שעכשיו הוא נגיש לך בכל רגע.</p>
+
+<h3>שתי דרכים — בחר אחת</h3>
+<div class="paths">
+  <div class="col rec">
+    <h4>Channels <span class="tag">מומלץ</span></h4>
+    <p>תוסף מובנה של Claude Code. <b>בלי לכתוב קוד.</b> שולח הודעה → Claude Code עצמו עונה, עם כל הכלים והזיכרון. הכי קל.</p>
+  </div>
+  <div class="col adv">
+    <h4>בוט Python משלך <span class="tag">מתקדם</span></h4>
+    <p>ערכת <code class="inl">12-telegram-bot</code>. שליטה מלאה והתאמה אישית — אבל יותר שלבים. בחר רק אם אתה רוצה בוט מותאם.</p>
+  </div>
+</div>
+
+<div class="note"><b>הדבר היחיד שמבלבל את כולם</b> זה לא טלגרם — זה <b>לאמת את Claude על השרת</b> (שלב 3), וזה שהאימות פג כל כמה חודשים (שלב 7). המדריך הזה פותר בדיוק את שני אלה. עקוב לפי הסדר.</div>
+
+<h2><span class="num">1</span>דרישות קדם</h2>
+<p>הכל רץ על השרת שלך. ודא שיש:</p>
+<ul>
+  <li><b>Claude Code</b> מותקן ומחובר למנוי שלך (Max/Pro). בדיקה: <code class="inl">claude --version</code></li>
+  <li>לדרך ה-Channels: גרסה <b>2.1.80 ומעלה</b>, ו-<b>Bun</b> מותקן.</li>
+  <li>חשבון <b>טלגרם</b> פעיל.</li>
+</ul>
+<p>התקנת Bun (אם אין). בטרמינל של השרת:</p>
+<pre>curl -fsSL https://bun.sh/install | bash</pre>
+<p>סגור ופתח טרמינל חדש, ואז בדוק: <code class="inl">bun --version</code></p>
+<figure><img src="images/channels_bun_install.png" alt="התקנת Bun"><figcaption>התקנת Bun — אמור להופיע מספר גרסה בסוף</figcaption></figure>
+
+<p>בדיקה מהירה של הכל בבת אחת — מהתיקייה הזו על השרת:</p>
+<pre>bash scripts/connect_telegram.sh</pre>
+<p>הסקריפט בודק גרסאות, Bun, ו<b>הכי חשוב — אם Claude מאומת</b>, ואומר לך מה חסר.</p>
+
+<h2><span class="num">2</span>יצירת בוט בטלגרם (BotFather)</h2>
+<ol>
+  <li>פתח טלגרם, חפש <code class="inl">@BotFather</code> ופתח אותו.</li>
+  <li>שלח <code class="inl">/newbot</code>.</li>
+  <li>תן שם לבוט (למשל "MaxAI Assistant").</li>
+  <li>תן שם-משתמש שמסתיים ב-<code class="inl">bot</code> (למשל <code class="inl">maxai_assistant_bot</code>).</li>
+  <li>קבל את ה-<b>TOKEN</b> — מחרוזת בסגנון <code class="inl">1234567890:ABCdef...</code>. <b>שמור אותו.</b></li>
+</ol>
+<figure><img src="images/botfather_newbot.jpg" alt="שיחה עם BotFather, פקודת newbot"><figcaption>שולחים /newbot ל-BotFather</figcaption></figure>
+<figure><img src="images/botfather_token.jpg" alt="קבלת ה-TOKEN מ-BotFather"><figcaption>ה-TOKEN שמתקבל בסוף — זה מה ששומרים</figcaption></figure>
+<div class="warn"><b>שמור על ה-TOKEN בסוד.</b> מי שיש לו את ה-TOKEN יכול לשלוט בבוט. לא משתפים אותו ולא מעלים אותו לאינטרנט.</div>
+
+<h2><span class="num star">3</span>אימות Claude על השרת — הצעד הקריטי</h2>
+<p class="lead">בשתי הדרכים, Claude חייב להיות מאומת על השרת. <b>אל תשתמש ב-<code class="inl">claude auth login</code> הרגיל</b> — מסך ההתחברות שלו דורש מסך אמיתי ונתקע על שרת מרוחק. במקום, השתמש בכלי המצורף:</p>
+
+<h3>3.1 · מייצרים לינק התחברות</h3>
+<pre>python3 scripts/claude_connect.py start</pre>
+<p>יודפס <b>לינק</b>. פתח אותו בדפדפן (בכל מכשיר), התחבר עם המנוי שלך, ואשר. תקבל <b>קוד</b> בסגנון <code class="inl">xxxx#yyyy</code> — העתק אותו.</p>
+
+<h3>3.2 · מדביקים את הקוד ומסיימים</h3>
+<pre>python3 scripts/claude_connect.py finish '<span class="c">הקוד-שהעתקת</span>'</pre>
+
+<h3>3.3 · בדיקה חיה (חובה!)</h3>
+<pre>python3 scripts/claude_connect.py test</pre>
+<div class="ok">אם חזר <b>PONG</b> — Claude מאומת ועובד. אפשר להמשיך. 🎉</div>
+<div class="slot">📸 <b>מקום לצילום מסך</b> — פלט הטרמינל של <code>claude_connect.py test</code> עם ה-PONG הירוק.<br>(להוספה: שים את התמונה ב-<code>images/</code> וקרא לה <code>auth_test_pong.png</code>)</div>
+<div class="note"><b>למה זה כך?</b> Claude מתחבר עם מנוי (לא API key בתשלום). הטוקן מתחדש לבד — עד שיום אחד הוא פג, ואז רואים שגיאת <b>401</b>. שלב 7 מסביר איך מתקנים בדקה.</div>
+
+<h2><span class="num">4</span>דרך A — Channels (המומלצת)</h2>
+<p>בתוך Claude Code על השרת (הרץ <code class="inl">claude</code>), כתוב:</p>
+<pre>/plugin install telegram@claude-plugins-official</pre>
+<p>אם מתקבלת שגיאה "לא נמצא", הוסף קודם את המרקטפלייס:</p>
+<pre>/plugin marketplace add anthropics/claude-plugins-official</pre>
+<figure><img src="images/channels_creating_bot.png" alt="התקנת תוסף הטלגרם ב-Claude Code"><figcaption>התקנת התוסף בתוך Claude Code</figcaption></figure>
+<p>עקוב אחרי ההגדרה — בשלב מסוים תתבקש להדביק את ה-<b>TOKEN</b> מ-BotFather (שלב 2).</p>
+<figure><img src="images/channels_configure_token.png" alt="הדבקת ה-TOKEN בהגדרת התוסף"><figcaption>מדביקים את ה-TOKEN של הבוט</figcaption></figure>
+
+<h2><span class="num">5</span>דרך B — בוט Python משלך (למתקדמים)</h2>
+<p>אם בחרת בבוט מותאם במקום Channels — השתמש בערכת <code class="inl">12-telegram-bot</code>:</p>
+<ol>
+  <li>העתק <code class="inl">.env.example</code> ל-<code class="inl">.env</code>.</li>
+  <li>הכנס את <code class="inl">TELEGRAM_BOT_TOKEN</code> (מ-BotFather) ואת <code class="inl">TELEGRAM_CHAT_ID</code> (מ-<code class="inl">@userinfobot</code>).</li>
+  <li>הרץ את הבוט, ופרוס כשירות <code class="inl">systemd</code> כדי שירוץ 24/7.</li>
+</ol>
+<p>הוראות מלאות בתוך הערכה. (גם דרך זו דורשת שלב 3 — אימות Claude.)</p>
+
+<h2><span class="num">6</span>בדיקה — שלח הודעה לבוט</h2>
+<p>פתח את הבוט שלך בטלגרם ושלח לו הודעה (למשל "היי"). הוא אמור לענות.</p>
+<div class="ok">קיבלת תשובה? <b>סיימת! הסוכן שלך חי בטלגרם.</b> 🎉</div>
+<div class="slot">📸 <b>מקום לצילום מסך</b> — שיחה אמיתית עם הבוט שעונה בטלגרם.<br>(להוספה: <code>images/telegram_working.png</code>)</div>
+
+<h2><span class="num star">7</span>כשהבוט מפסיק פתאום — תפוגת טוקן (401)</h2>
+<p>כל כמה חודשים הטוקן של Claude פג, והבוט יחזיר שגיאה (לרוב מוזכר בה <b>401</b> / <b>authentication</b>). <b>זה נורמלי ולוקח דקה לתקן</b> — בדיוק כמו שלב 3:</p>
+<pre>python3 scripts/claude_connect.py start     <span class="c"># פתח את הלינק, אשר, קח קוד</span>
+python3 scripts/claude_connect.py finish '<span class="c">הקוד</span>'
+python3 scripts/claude_connect.py test      <span class="c"># ודא PONG</span></pre>
+<div class="note">לבדוק את מצב הטוקן בכל רגע: <code class="inl">python3 scripts/claude_connect.py check</code> — מראה מתי הטוקן פג.</div>
+
+<h2><span class="num">8</span>תקלות נפוצות</h2>
+<table>
+  <tr><th>מה רואים</th><th>הפתרון</th></tr>
+  <tr><td>הבוט מחזיר שגיאת <b>401</b> / "authentication"</td><td>הטוקן של Claude פג. הרץ שלב 7 (start → finish → test).</td></tr>
+  <tr><td><code class="inl">claude_connect.py test</code> לא מחזיר PONG</td><td>חזור על start → finish עם קוד טרי. ודא שאתה מחובר עם החשבון הנכון.</td></tr>
+  <tr><td>"הקוד פג" / החילופין נכשלו</td><td>הקוד חד-פעמי ופג תוך דקות. הרץ <code class="inl">start</code> שוב וקח קוד חדש מהר.</td></tr>
+  <tr><td>"command not found: bun"</td><td>סגור ופתח טרמינל חדש אחרי התקנת Bun. אם עדיין — התקן שוב (שלב 1).</td></tr>
+  <tr><td>"/plugin install" לא נמצא</td><td>גרסת Claude ישנה. עדכן ל-2.1.80+, או הוסף קודם את ה-marketplace (שלב 4).</td></tr>
+  <tr><td>הבוט לא עונה בכלל</td><td>ודא שהשרת דולק, ש-Claude מאומת (<code class="inl">check</code>), ושה-TOKEN הודבק נכון.</td></tr>
+</table>
+
+<div class="foot">
+  <b>MAX AI</b> · מדריך פנימי לתלמידי "אימפריה של איש אחד" · <b>חיבור הסוכן לטלגרם</b><br>
+  כלי ההתחברות: <code class="inl">scripts/claude_connect.py</code> · שאלות? פנה במסגרת תכנית הליווי.
+</div>
+
+</div>
+</body>
+</html>

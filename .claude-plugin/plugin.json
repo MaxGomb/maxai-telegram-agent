@@ -1,0 +1,24 @@
+{
+  "name": "telegram_agent_max_ai",
+  "description": "Connect your Claude agent to Telegram, step by step, no coding required. Two paths: run it locally on your computer (Claude Code Channels) or 24/7 on your own cloud server (Contabo VPS). Includes a one-command tool that fixes the part everyone gets stuck on - authenticating Claude on a headless server, and re-login when the token expires (the 401 error).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Max AI",
+    "email": "max@ms-marketing.co.il"
+  },
+  "license": "MIT",
+  "keywords": [
+    "telegram",
+    "bot",
+    "agent",
+    "claude",
+    "channels",
+    "ai",
+    "chatbot",
+    "hebrew",
+    "no-code",
+    "contabo",
+    "vps",
+    "max-ai"
+  ]
+}

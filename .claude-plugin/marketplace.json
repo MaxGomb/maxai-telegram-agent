@@ -1,0 +1,19 @@
+{
+  "name": "Max AI",
+  "description": "Max AI plugins for building AI agents - Telegram, WhatsApp, automation, and more",
+  "owner": {
+    "name": "Max AI",
+    "email": "max@ms-marketing.co.il"
+  },
+  "plugins": [
+    {
+      "name": "telegram_agent_max_ai",
+      "description": "Connect your Claude AI agent to Telegram - locally on your computer or 24/7 on your own cloud server. No coding required.",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "Max AI"
+      }
+    }
+  ]
+}
